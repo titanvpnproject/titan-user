@@ -1,0 +1,3 @@
+deb http://ftp.daum.net/debian jessie main
+deb http://ftp.daum.net/debian jessie-updates main
+deb http://ftp.daum.net/debian-security jessie/updates main

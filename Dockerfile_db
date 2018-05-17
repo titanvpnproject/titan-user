@@ -1,7 +1,9 @@
 FROM mysql:5.7
+RUN mkdir /code
+WORKDIR /code
+ADD . /code/
 WORKDIR /etc/apt
-RUN git clone https://github.com/h4ppyy/docker_sources.list
-RUN mv docker_sources.list/sources.list sources.list
+RUN cp /code/sources.list . 
 RUN apt-get update
 RUN apt-get install -y vim
 RUN apt-get install -y curl
