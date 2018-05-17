@@ -2,6 +2,7 @@ version: '3'
 
 services:
   db:
+    container_name: django_db
     image: mysql
     environment:
       MYSQL_ROOT_PASSWORD: "0000"
@@ -11,6 +12,7 @@ services:
     ports:
       - "3315:3306"
   web:
+    container_name: django_web
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
     volumes:
