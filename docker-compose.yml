@@ -11,8 +11,8 @@ services:
       MYSQL_PASSWORD: "0000"
     ports:
       - "3315:3306"
-    command: ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '0000';
-    command: ALTER USER 'admin'@'%' IDENTIFIED WITH mysql_native_password BY '0000';
+    command: mysql -uroot -p0000 -e "ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '0000'"
+    command: mysql -uroot -p0000 -e "ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY '0000'"
   web:
     container_name: django_web
     build: .
@@ -24,4 +24,4 @@ services:
     depends_on:
       - db
     links:
-      - db:django_db
+      - db
