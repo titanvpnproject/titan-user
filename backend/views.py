@@ -28,11 +28,11 @@ def sample(request):
         cur.execute(query)
         rows = cur.fetchall()
     """
-    
+
     context = {}
     context['sample_key'] = 'sample_val'
 
-    return render(request, 'app/sample.html', context)
+    return render(request, 'backend/sample.html', context)
     #return JsonResponse({'a':'b'})
 
 class SampleView(CreateAPIView):
@@ -40,7 +40,7 @@ class SampleView(CreateAPIView):
     serializer_class = SampleSerializer
 
     def create(self, request):
- 
+
         id = request.POST.get('id')
         print("id = ", id)
 
