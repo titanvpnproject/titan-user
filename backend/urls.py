@@ -19,6 +19,8 @@ urlpatterns = [
 
     # main-url
     url('sample$', SampleViews.sample, name='sample'),
+    url('vuejs$', SampleViews.vuejs, name='vuejs'),
+
     url('login$', loginViews.login, name='login'),
     url('logout$', logoutViews.logout, name='logout'),
 ]
