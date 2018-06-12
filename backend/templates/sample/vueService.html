@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <h1>vuejs service (10)</h1>
+  <h1>vuejs service (20)</h1>
 
   <div id="app">
     [[ message ]]
@@ -16,7 +16,7 @@
     <todo-item
       v-for="item in message"
       v-bind:todo="item"
-      v-bind:key="item.email">
+      v-bind:key="item.id">
     </todo-item>
 
     <br/><button v-on:click="reverseMessage">메시지 뒤집기</button>
@@ -31,7 +31,7 @@
 
 Vue.component('todo-item', {
   props: ['todo'],
-  template: '<h5>{{ todo.text }}</h5>'
+  template: '<h5>{{ todo.email }} / {{ todo.regist_date }}</h5>'
 })
 
 var app = new Vue({
@@ -51,9 +51,12 @@ var app = new Vue({
       axios.post('/api_simpleUser')
       .then(res => {
         var persons = res.data;
+        console.log(persons.result.length);
         console.log(persons.result);
+        console.log(persons.result[0]);
         console.log(persons.result[0][0]);
         console.log(persons.result[0][1]);
+        console.log(persons.result[0][2]);
         //var obj = JSON.parse(persons.result);
         this.message = persons.result;
       })

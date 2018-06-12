@@ -24,6 +24,14 @@ class SampleView(CreateAPIView):
 
         return Response({"result": "ok"})
 
+def dictfetchall(cursor):
+    "Returns all rows from a cursor as a dict"
+    desc = cursor.description
+    return [
+            dict(zip([col[0] for col in desc], row))
+            for row in cursor.fetchall()
+    ]
+
 class SimpleUserView(CreateAPIView):
 
     serializer_class = SimpleUserSerializer
@@ -32,10 +40,12 @@ class SimpleUserView(CreateAPIView):
 
         with connections['default'].cursor() as cur:
             query = '''
-                select email, regist_date
+                select id, email, regist_date
                 from sample_user
             '''
             cur.execute(query)
-            rows = cur.fetchall()
+            rows = dictfetchall(cur)
+
+        print(rows)
 
         return Response({"result": rows})
