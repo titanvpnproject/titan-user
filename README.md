@@ -19,17 +19,24 @@
 - <code>cd main</code>    
 - <code>docker-compose up</code>  
   
-아래 문구 출력 시 종료 후 다시 docker-compose up  
-django_db | Version: '5.7.22'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)    
+##### 아래 문구 출력 시 종료 후 다시 docker-compose up  
+##### django_db | Version: '5.7.22'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)    
   
 - <code>docker-compose up</code>    
   
-성공 시 아래의 문구가 출력됨  
-django_web | Quit the server with CONTROL-C.    
+##### 성공 시 아래의 문구가 출력됨  
+##### django_web | Quit the server with CONTROL-C.    
   
 접속 방법
 -------------
 - django  
-127.0.0.1:8005  
+127.0.0.1:8005/sample  
 - mysql  
 127.0.0.1:3315  
+
+꿀팁
+-------------
+##### docker background 실행  
+- <code>docker-compose up -d</code>  
+##### docker background 실행 후 log 보기  
+- <code>docker-compose logs</code>  
