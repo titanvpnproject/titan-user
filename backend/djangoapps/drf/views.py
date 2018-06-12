@@ -7,11 +7,15 @@ from django.db import connections
 #REST-API
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
+
 from .serializers import SampleSerializer
 from .serializers import SimpleUserSerializer
+from .serializers import SimpleUserAddSerializer
 
 #UTIL
 import json
+
+from backend.djangoapps.common.views import dictfetchall
 
 class SampleView(CreateAPIView):
 
@@ -24,14 +28,6 @@ class SampleView(CreateAPIView):
 
         return Response({"result": "ok"})
 
-def dictfetchall(cursor):
-    "Returns all rows from a cursor as a dict"
-    desc = cursor.description
-    return [
-            dict(zip([col[0] for col in desc], row))
-            for row in cursor.fetchall()
-    ]
-
 class SimpleUserView(CreateAPIView):
 
     serializer_class = SimpleUserSerializer
@@ -40,12 +36,36 @@ class SimpleUserView(CreateAPIView):
 
         with connections['default'].cursor() as cur:
             query = '''
-                select id, email, regist_date
+                select
+                    id,
+                    email,
+                    DATE_FORMAT(regist_date,'%Y-%c-%e') as regist_date
                 from sample_user
             '''
             cur.execute(query)
+            #rows = cur.fetchall()
             rows = dictfetchall(cur)
 
         print(rows)
 
         return Response({"result": rows})
+
+class SimpleUserAddView(CreateAPIView):
+
+    serializer_class = SimpleUserAddSerializer
+
+    def create(self, request):
+
+        jsonData = json.loads(request.body.decode('utf-8'))
+
+        email = jsonData['email']
+        password = jsonData['password']
+
+        with connections['default'].cursor() as cur:
+            query = '''
+                insert into sample_user(email, password)
+                value ('{email}', '{password}');
+            '''.format(email=email, password=password)
+            cur.execute(query)
+
+        return Response({"result": "success"})

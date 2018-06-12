@@ -5,3 +5,7 @@ class SampleSerializer(serializers.Serializer):
 
 class SimpleUserSerializer(serializers.Serializer):
     pass
+
+class SimpleUserAddSerializer(serializers.Serializer):
+    email = serializers.CharField()
+    password = serializers.CharField()

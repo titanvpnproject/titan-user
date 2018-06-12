@@ -9,6 +9,7 @@ import json
 
 from django.conf import settings
 from backend.djangoapps.common.views import common_sample
+from backend.djangoapps.common.views import dictfetchall
 
 def sample(request):
 
@@ -68,28 +69,24 @@ def vuejs(request):
 
 def vueService(request):
 
-    """
-    making logic
-    """
-
-    """
     with connections['default'].cursor() as cur:
         query = '''
-            select *
-            FROM table
-            where sample = '{page}'
-        '''.format(page=page)
+            select
+                id,
+                email,
+                DATE_FORMAT(regist_date,'%Y-%c-%e') as regist_date
+            from sample_user
+        '''
         cur.execute(query)
-        rows = cur.fetchall()
-    """
+        rows = dictfetchall(cur)
+
+        print("----------------> s")
+        print(rows)
+        print("----------------> e")
 
     context = {}
-    context['helloData'] = 'render data'
-
-    print("-------------------------> DEBUG [s]")
-    common_sample()
-    print(settings.TIME_ZONE)
-    print("-------------------------> DEBUG [e]")
+    #context['helloData'] = rows
+    context['helloData'] = '18'
 
     return render(request, 'sample/vueService.html', context)
     #return JsonResponse({'a':'b'})
