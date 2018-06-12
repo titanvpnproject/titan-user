@@ -81,8 +81,8 @@ DATABASES = {
         'NAME': 'main',
         'USER': 'admin',
         'PASSWORD': '0000',
-        'HOST': '127.0.0.1',
-        'PORT': '3315',
+        'HOST': 'db',
+        'PORT': '3306',
     }
 }
 
@@ -109,8 +109,8 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR + '/backend/static/'
 ]
