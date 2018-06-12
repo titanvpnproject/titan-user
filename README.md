@@ -40,3 +40,11 @@
 - <code>docker-compose up -d</code>  
 ##### docker background 실행 후 log 보기  
 - <code>docker-compose logs</code>  
+
+브랜치 정보
+-------------
+##### version1
+- 기본 프레임
+
+##### version2
+- 디렉토리 모듈화
