@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+</head>
+
+<body>
+  <h1>vuejs service (10)</h1>
+
+  <div id="app">
+    [[ message ]]
+
+    <todo-item
+      v-for="item in message"
+      v-bind:todo="item"
+      v-bind:key="item.email">
+    </todo-item>
+
+    <br/><button v-on:click="reverseMessage">메시지 뒤집기</button>
+    <br/><button v-on:click="changeMessage">메시지 바꾸기</button>
+    <br/><button v-on:click="axiosData">Axios</button>
+  </div>
+  <hr/>
+
+</body>
+
+<script>
+
+Vue.component('todo-item', {
+  props: ['todo'],
+  template: '<h5>{{ todo.text }}</h5>'
+})
+
+var app = new Vue({
+  delimiters: ['[[', ']]'],
+  el: '#app',
+  data: {
+    message: '${helloData}'
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    },
+    changeMessage: function () {
+      this.message = 'hello world'
+    },
+    axiosData: function () {
+      axios.post('/api_simpleUser')
+      .then(res => {
+        var persons = res.data;
+        console.log(persons.result);
+        console.log(persons.result[0][0]);
+        console.log(persons.result[0][1]);
+        //var obj = JSON.parse(persons.result);
+        this.message = persons.result;
+      })
+    }
+  }
+})
+</script>
+
+</html>

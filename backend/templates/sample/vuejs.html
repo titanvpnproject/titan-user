@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>vuejs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 </head>
 
 <body>
-  <h1>vuejs tutorial</h1>
+  <h1>vuejs tutorial (1)</h1>
 
   <div id="app">
     [[ message ]]
@@ -59,8 +61,6 @@
 
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 <script>
 var app = new Vue({
   delimiters: ['[[', ']]'],
@@ -130,8 +130,9 @@ var app6 = new Vue({
 })
 
 Vue.component('todo-item', {
+  delimiters: ['[[', ']]'],
   props: ['todo'],
-  template: '<h5>{{ todo.text }}</h5>'
+  template: '<h5>[[ todo.text ]]</h5>'
 })
 
 var app7 = new Vue({

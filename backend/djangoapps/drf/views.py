@@ -8,6 +8,7 @@ from django.db import connections
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from .serializers import SampleSerializer
+from .serializers import SimpleUserSerializer
 
 #UTIL
 import json
@@ -22,3 +23,19 @@ class SampleView(CreateAPIView):
         print("id = ", id)
 
         return Response({"result": "ok"})
+
+class SimpleUserView(CreateAPIView):
+
+    serializer_class = SimpleUserSerializer
+
+    def create(self, request):
+
+        with connections['default'].cursor() as cur:
+            query = '''
+                select email, regist_date
+                from sample_user
+            '''
+            cur.execute(query)
+            rows = cur.fetchall()
+
+        return Response({"result": rows})
