@@ -26,6 +26,8 @@
 - <code>make venv</code>  
 - <code>make req</code>  
 - <code>make db</code>  
+- <code>make mig</code>  
+- <code>make sql</code>  
 - <code>make server</code>  
   
 접속 방법
