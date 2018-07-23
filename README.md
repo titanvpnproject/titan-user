@@ -24,6 +24,7 @@
 - <code>git clone https://github.com/h4ppyy/main</code>    
 - <code>cd main</code>    
 - <code>make venv</code>  
+- <code>. venv/bin/activate</code>  
 - <code>make req</code>  
 - <code>make db</code>  
 - <code>make mig</code>  
