@@ -1,4 +1,3 @@
-psycopg2
 Django==2.0.5
 mysqlclient==1.3.12
 djangomako==1.1.1

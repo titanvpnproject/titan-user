@@ -2,8 +2,6 @@ FROM mysql:5.7
 RUN mkdir /code
 WORKDIR /code
 ADD . /code/
-WORKDIR /etc/apt
-RUN cp /code/sources.list . 
 RUN apt-get update
 RUN apt-get install -y vim
 RUN apt-get install -y curl

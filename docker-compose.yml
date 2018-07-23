@@ -4,6 +4,7 @@ services:
   db:
     container_name: django_db
     image: mysql:5.7
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: "0000"
       MYSQL_DATABASE: "main"
@@ -14,17 +15,3 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_db
-  web:
-    container_name: django_web
-    build:
-      context: .
-      dockerfile: Dockerfile_web
-    command: python3 manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/code
-    ports:
-      - "8005:8000"
-    depends_on:
-      - db
-    links:
-      - db
