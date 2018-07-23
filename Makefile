@@ -7,5 +7,8 @@ req:
 db:
 	docker-compose up -d
 
+mig:
+	python manage.py migrate
+	
 server:
 	python manage.py runserver 0.0.0.0:7777
