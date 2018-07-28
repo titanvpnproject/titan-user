@@ -13,8 +13,7 @@
 - mysql 5.7
 - django 2.0.5
 - djangomako 1.1.1
-- djangorestframework 3.8.2
-- django-rest-swagger 2.2.0
+
 
 개발환경 구축 방법
 -------------
@@ -52,5 +51,9 @@
 ##### version4
 - vue.js + axios + drf + mysql 'CR' 샘플 추가
 
-##### version4
+##### version5
 - 개발환경 자동화 (Makefile, docker)
+
+##### default
+- 이 브랜치를 가장 많이 사용할거에요 (경량화)
+
