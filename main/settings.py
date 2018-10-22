@@ -79,8 +79,8 @@ DATABASES = {
         'NAME': 'main',
         'USER': 'admin',
         'PASSWORD': '0000',
-        'HOST': '127.0.0.1',
-        'PORT': '3315',
+        'HOST': 'main.mysql',
+        'PORT': '3306',
     }
 }
 
