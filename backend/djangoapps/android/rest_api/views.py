@@ -1,17 +1,13 @@
-#-*- coding: utf-8 -*-
+import json
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_protect
 from django.db import connections
 
-#UTIL
-import json
 
-def login(request):
+def sample(request):
 
-    """
-    making logic
-    """
+    print('hello world')
 
     """
     with connections['default'].cursor() as cur:
@@ -22,10 +18,8 @@ def login(request):
         '''.format(page=page)
         cur.execute(query)
         rows = cur.fetchall()
+
+    return JsonResponse({'result':rows})
     """
 
-    context = {}
-    context['sample_key'] = 'sample_val'
-
-    return render(request, 'login/login.html', context)
-    #return JsonResponse({'a':'b'})
+    return JsonResponse({'result':200})

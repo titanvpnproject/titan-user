@@ -1,0 +1,22 @@
+<%inherit file="../common/frame.html"/>
+<%block name="css">
+  <style>
+    .sample{
+      border: solid 1px red;
+    }
+  </style>
+</%block>
+
+<%block name="content">
+  <div class="sample" onclick="hello();">
+    hello world
+  </div>
+</%block>
+
+<%block name="js">
+  <script>
+    function hello(){
+      alert(111);
+    }
+  </script>
+</%block>
